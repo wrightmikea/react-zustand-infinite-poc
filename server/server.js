@@ -23,6 +23,41 @@ const LOREM = [
   "Curabitur imperdiet semper elit, quis gravida ligula vehicula at.",
   "Aliquam erat volutpat. Donec tristique, tellus at luctus elementum."
 ];
+
+// --- Cat Videos from YouTube (verified embeddable) ---
+const CAT_VIDEOS = [
+  { id: "W86cTIoMv2U", title: "World's Smallest Cat - BBC" },
+  { id: "0Bmhjf0rKe8", title: "Surprised Kitty (Original)" },
+  { id: "z_AbfPXTKms", title: "Maru - I Love Box" },
+  { id: "G4Sn91t1V4g", title: "Dear Kitten" },
+  { id: "INVALID_ID_TEST", title: "Video Not Found Example" },
+  { id: "Q34z5dCmC4M", title: "Henri 2, Paw de Deux" },
+  { id: "w0ffwDYo00Q", title: "Cat Man Do - Simon's Cat" },
+  { id: "4rb8aOzy9t4", title: "Let Me In! - Simon's Cat" },
+  { id: "qpl5mOAXNl4", title: "I'm a Stupid Cat!" },
+  { id: "X3iFhLdWjqc", title: "Cats Playing Patty-cake" },
+  { id: "wf_IIbT8HGk", title: "Supercats Episode 1" },
+  { id: "tu0qtEwb9gE", title: "Keyboard Cat Redux" },
+  { id: "5dsGWM5XGdg", title: "Cats Are So Funny" },
+  { id: "ZuHZSbPJhaY", title: "Lil BUB's Magical Yule LOG" },
+  { id: "2XID_W4neJo", title: "Maru - Too Small Boxes" },
+  { id: "S7znI_Kpzbs", title: "You Shall Not Pass, Dog" },
+  { id: "PKffm2uI4dk", title: "Sad Cat Diary" },
+  { id: "mHXBL6bzAR4", title: "An Engineer's Guide to Cats" },
+  { id: "Pk7yqlTMvp8", title: "Cowboys Herding Cats" },
+  { id: "lAIGb1lfpBw", title: "MitchiriNeko March" },
+  { id: "xbs7FT7dXYc", title: "Cat TV - 8 Hour Birds" },
+  { id: "YLDbGqJ2KYk", title: "Kitten Surprise!" },
+  { id: "nxhgP6xsrsY", title: "Funny Cat Moments" },
+  { id: "hPzNl6NKAG0", title: "Training Cat" },
+  { id: "bGgKdDCJx5o", title: "Relaxing Cat Video" },
+  { id: "UbQgXeY_zi4", title: "Caravan Palace - Lone Digger" },
+  { id: "tpiyEe_CqB4", title: "Peaceful Cat" },
+  { id: "aFuUidBR1aQ", title: "Cat Compilation" },
+  { id: "hGlyFc79BUE", title: "Badgers 10 Hours" },
+  { id: "9hBpF_Zj4OA", title: "Rotate Your Owl" }
+];
+
 const kinds = ["hero", "quote", "card"];
 
 app.get("/api/section", (req, res) => {
@@ -32,11 +67,12 @@ app.get("/api/section", (req, res) => {
   if (!Number.isFinite(index) || index < 0) return res.status(400).json({ error: `Invalid index: ${req.query.index}` });
 
   const seed = (index * 131 + kind.length * 17) % LOREM.length;
-  const title = `${kind.toUpperCase()} #${index}`;
+  const video = CAT_VIDEOS[index % CAT_VIDEOS.length];
+  const title = video.title;
   const text = `${LOREM[seed]} ${LOREM[(seed + 3) % LOREM.length]}`;
   const image = `https://picsum.photos/seed/${encodeURIComponent(kind + "-" + index)}/800/400`;
 
-  const payload = { kind, index, title, text, image };
+  const payload = { kind, index, title, text, image, video };
   const delay = 150 + (index % 5) * 120; // simulate jitter
   setTimeout(() => res.json(payload), delay);
 });

@@ -1,4 +1,5 @@
 import React from "react";
+import YouTubePlayer from "./YouTubePlayer.jsx";
 
 function Badge({ children }) {
   return <span className="badge">{children}</span>;
@@ -7,7 +8,13 @@ function Badge({ children }) {
 export default function Card({ data, index }) {
   return (
     <div className="card">
-      <img src={data?.image || "https://picsum.photos/220/160?blur=2"} alt="" />
+      <div className="card-video">
+        {data?.video ? (
+          <YouTubePlayer videoId={data.video.id} title={data.video.title} />
+        ) : (
+          <img src={data?.image || "https://picsum.photos/220/160?blur=2"} alt="" />
+        )}
+      </div>
       <div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <Badge>#{index}</Badge>
