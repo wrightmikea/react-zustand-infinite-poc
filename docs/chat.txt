@@ -1714,10 +1714,65 @@ respond to a scroll-event handler requesting the video start (and stop) playing 
   The branch is now up to date with origin/main. There's an untracked docs/ directory (likely Playwright test artifacts) that
   wasn't part of the requested changes.
 
+> use MCP/Playwright to take a partial screen capture (not the whole screen given that it is an "infinite" scroll) into 
+./images/screenshot.png and add a link to this from the README.md 
+
+⏺ Bash(mkdir -p /Users/mike/github/wrightmikea/react-zustand-infinite-poc/images)
+  ⎿  (No content)
+
+⏺ playwright - playwright_navigate (MCP)(url: "http://localhost:5173", width: 1280, height: 800)
+  ⎿  Navigated to http://localhost:5173                                                                                      
+
+⏺ playwright - playwright_screenshot (MCP)(name: "screenshot", savePng: true, downloadsDir:
+                                          "/Users/mike/github/wrightmikea/react-zustand-infinite-poc/images", width: 1280, height:
+                                           800)
+  ⎿  Screenshot saved to: images/screenshot-2025-11-30T20-50-50-911Z.png                                                     
+  ⎿  Screenshot also stored in memory with name: 'screenshot'
+
+⏺ Bash(mv /Users/mike/github/wrightmikea/react-zustand-infinite-poc/images/screenshot-2025-11-30T20-50-50-911Z.png
+      /Users/mike/github/wrightmikea/react-zustand-infinit…)
+  ⎿  (No content)
+
+⏺ Read(README.md)
+  ⎿  Read 33 lines
+
+⏺ Update(README.md)
+  ⎿  Updated README.md with 2 additions                                                                                    
+       1    # React + Zustand Infinite Scroll (POC) with Express API
+       2    
+       3 +  ![Screenshot](images/screenshot.png)
+       4 +  
+       5    This is a **portable** proof-of-concept intended to keep business/state logic React-Native‑friendly:
+       6    - UI components are web React for now; store + data layer is framework‑agnostic (no DOM APIs inside store).
+       7    - The only web-specific piece is the viewport detection hook (`useOnView`). In React Native, you'd replace this
+            with a `FlatList` `onEndReached` or a visibility callback library.
+
+⏺ Bash(git add /Users/mike/github/wrightmikea/react-zustand-infinite-poc/images/screenshot.png
+      /Users/mike/github/wrightmikea/react-zustand-infinite-poc/README.md)
+  ⎿  (No content)
+
+⏺ Bash(git commit -m "Add screenshot to README…)
+  ⎿  [main f6e1730] Add screenshot to README  
+      2 files changed, 2 insertions(+)
+      create mode 100644 images/screenshot.png
+
+⏺ Bash(git push)
+  ⎿  To github.com:wrightmikea/react-zustand-infinite-poc.git
+        118af3b..f6e1730  main -> main
+  ⎿  Browser closed successfully                                                                                             
+
+⏺ Done. Screenshot captured and committed:
+
+  Commit f6e1730: Add screenshot to README
+  - Created images/screenshot.png showing the infinite scroll UI with cat video player
+  - Added screenshot image link to README.md at the top
+
+  The screenshot is now visible in the README on GitHub.
+
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 >  
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  react-zustand-infinite-poc | main ±2 | Opus 4.5 | $0 | 0 lines
+  react-zustand-infinite-poc | main ✓ | Opus 4.5 | $0 | 0 lines
   ⏵⏵ accept edits on (shift+tab to cycle) · 1 background task
 
 
