@@ -1,5 +1,7 @@
 # React + Zustand Infinite Scroll (POC) with Express API
 
+![Screenshot](images/screenshot.png)
+
 This is a **portable** proof-of-concept intended to keep business/state logic React-Native‑friendly:
 - UI components are web React for now; store + data layer is framework‑agnostic (no DOM APIs inside store).
 - The only web-specific piece is the viewport detection hook (`useOnView`). In React Native, you'd replace this with a `FlatList` `onEndReached` or a visibility callback library.
